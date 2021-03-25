@@ -263,79 +263,67 @@ function Arc1 () {
                 talkingToStoryCharacter = false
                 tiles.loadMap(tiles.createMap(tilemap`YourHouse`))
                 Bed = sprites.create(img`
-                    8811111111111188
-                    8811111111111188
-                    8811111111111188
-                    8881111111111888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccc444444444ccc
-                    4444444444444444
+                    ffffffffffffffffff
+                    f8f111111111111f8f
+                    f8f111111111111f8f
+                    f8f111111111111f8f
+                    f88f1111111111f88f
+                    f888ffffffffff888f
+                    f8888888888888888f
+                    f8888888888888888f
+                    f8888888888888888f
+                    f8888888888888888f
+                    ffffffffffffffffff
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccccccccccccccf
+                    fccccfffffffffcccf
+                    fffff444444444ffff
+                    f4444444444444444f
+                    ffffffffffffffffff
                     `, SpriteKind.Player)
                 tiles.placeOnTile(Bed, tiles.getTileLocation(1, 1))
                 Bed.y += 8
                 Ethan = sprites.create(img`
-                    8811111111111188
-                    8811111111111188
-                    8811111111111188
-                    8881111111111888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    8888888888888888
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccccccccccccccc
-                    cccc444444444ccc
-                    4444444444444444
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
                     `, SpriteKind.Player)
+                CharacterAnimateable = true
             })
         })
     })
 }
+let CharacterAnimateable = false
 let Ethan: Sprite = null
 let Bed: Sprite = null
 let talkingToStoryCharacter = false
@@ -736,5 +724,39 @@ game.onUpdate(function () {
                 eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                 `)
         }
+    }
+})
+forever(function () {
+    if (CharacterAnimateable) {
+        character.loopFrames(
+        Ethan,
+        [img`
+            .....fffffff.....
+            ...ff2222222ff...
+            ..f22222222222f..
+            ..f22222222222f..
+            .f2222222222222f.
+            .f2222fffff2222f.
+            .f222fffffff222f.
+            .fbbbfbbbbbfbbbf.
+            fdfbbbbbbbbbbbfdf
+            fdefffffffffffedf
+            .feddbfeeefbddef.
+            ..fdd1fdddf1ddf..
+            ...eddddddddde...
+            ...fedddddddef...
+            ..f4efedddefe4f..
+            .e24e25eee52e42e.
+            fddd2225f5222dddf
+            fddd2225f5222dddf
+            .ffff225f522ffff.
+            ...f8fffffff8f...
+            ...fcc88888ccf...
+            ...feefffffeef...
+            ....ff.....ff....
+            `],
+        500,
+        character.rule(Predicate.FacingDown)
+        )
     }
 })
