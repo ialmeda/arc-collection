@@ -38,6 +38,13 @@ function startGame () {
     	
     }
 }
+tiles.onMapLoaded(function (tilemap2) {
+    timer.after(1, function () {
+        if (tiles.getLoadedMap() == tiles.createMap(tilemap`YourHouse`)) {
+        	
+        }
+    })
+})
 spriteutils.createRenderable(0, function (screen2) {
     if (sprites.readDataBoolean(MainMenu, "AtMainMenu")) {
         screen2.drawRect(30, 90, 100, 5, 2)
@@ -194,43 +201,45 @@ function Arc1 () {
         ...1edde1.11116666661111.edde1..
         ....dddd..11116666661111.dddd...
         ...ddddd..11116666661111.ddddd..
-        ...ddddd..11116666661111.ddddd..
-        ...ddddd..11116666661111.ddddd..
-        ..........11116666661111........
-        ..........11116666661111........
-        ..........11116666661111........
-        ..........11118888881111........
-        ..........11118888881111........
-        ..........11118888881111........
-        ..........11118888881111........
-        ..........11118888881111........
-        ..........888888..888888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
-        ..........88888....88888........
+        ...ddddd..1111eeeeee1111.ddddd..
+        ...ddddd..1111eeeeee1111.ddddd..
+        ..........1111eeeeee1111........
+        ..........1111eeeeee1111........
+        ..........1111eeeeee1111........
+        ..........1111eeeeee1111........
+        ..........1111ee..ee1111........
+        ..........1111e....e1111........
+        ..........1111e....e1111........
+        ..........1111e....e1111........
         ..........eeeee....eeeee........
         ..........eeeee....eeeee........
-        ................................
-        ................................
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        ..........eeeee....eeeee........
+        .........bbbbbb....bbbbbb.......
+        .........bbbbbb....bbbbbb.......
         ................................
         ................................
         `, SpriteKind.Player)
     talkingToStoryCharacter = true
     timer.after(500, function () {
-        while (talkingToStoryCharacter) {
+        for (let index = 0; index < 5; index++) {
             music.playTone(262, music.beat(BeatFraction.Whole))
             music.playTone(330, music.beat(BeatFraction.Whole))
             music.playTone(440, music.beat(BeatFraction.Whole))
         }
-    })
-    timer.after(500, function () {
-        music.playTone(131, music.beat(BeatFraction.Breve))
+        for (let index = 0; index < 4; index++) {
+            music.playTone(196, music.beat(BeatFraction.Whole))
+            music.playTone(247, music.beat(BeatFraction.Whole))
+            music.playTone(330, music.beat(BeatFraction.Whole))
+        }
     })
     story.queueStoryPart(function () {
         story.spriteSayText(StoryProfesser, "Hi, there Ethan...")
@@ -252,11 +261,83 @@ function Arc1 () {
                 color.startFade(color.White, color.originalPalette, 1000)
                 StoryProfesser.destroy()
                 talkingToStoryCharacter = false
-                tiles.setTilemap(tilemap`YourHouse`)
+                tiles.loadMap(tiles.createMap(tilemap`YourHouse`))
+                Bed = sprites.create(img`
+                    8811111111111188
+                    8811111111111188
+                    8811111111111188
+                    8881111111111888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccc444444444ccc
+                    4444444444444444
+                    `, SpriteKind.Player)
+                tiles.placeOnTile(Bed, tiles.getTileLocation(1, 1))
+                Bed.y += 8
+                Ethan = sprites.create(img`
+                    8811111111111188
+                    8811111111111188
+                    8811111111111188
+                    8881111111111888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    8888888888888888
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccccccccccccccc
+                    cccc444444444ccc
+                    4444444444444444
+                    `, SpriteKind.Player)
             })
         })
     })
 }
+let Ethan: Sprite = null
+let Bed: Sprite = null
 let talkingToStoryCharacter = false
 let StoryProfesser: Sprite = null
 let MainMenu: Sprite = null
